@@ -1,11 +1,33 @@
-#include <cstdlib>
-#include <ctime>
-#include <iostream>
-using namespace std;
+#include	<iostream>
+#include	<ctime>
+#include	<cstdlib>
+#include	<iomanip>
+using	namespace	std;
 
-int getRdnum(void);
-int getRdnum(int);
-int getRdnum(int, int);
+int		makearray(int []);
+void	bubble(int [], int);
+void	printout(int [], int);
 
-// Complete overloading functions.
-// Your code here.
+
+const	int		SIZE = 100;
+
+int			main()
+{
+	int		number[SIZE];
+	int		last;
+
+	last = makearray(number);
+	printout(number, last);
+	bubble(number, last);
+	printout(number, last);
+}
+
+int	 	makearray(int	number[])
+{
+}
+void	bubble(int number[], int last)
+{
+}
+void	printout(int number[], int last)
+{
+}
