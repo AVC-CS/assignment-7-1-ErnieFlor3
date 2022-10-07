@@ -3,62 +3,39 @@
 #include "catch.hpp"
 #include "main.hpp"
 // tests for exercise 1
-TEST_CASE("Ex1 getRdnum()", "[example]")
+TEST_CASE("Ex1 makearray()", "[example]")
 {
-	int result = 1;
-	int tmp, fault;
-
-	for(int i=0;i<10; i++)
+	const int SIZE = 100;
+	int numbers[SIZE];
+	int cnt, result;
+	result = 1;
+	cnt = makearray(numbers);
+	printout(numbers, cnt);
+	result = (cnt > 0) ? 1 : 0;
+	if ((cnt > 0))
 	{
-		tmp = getRdnum();
-		cout << tmp << endl;
-		if ((tmp <= 0) || (tmp > 10))
-		{
-			fault = tmp;
-			result  = 0;
-		}
+		for (int i = 0; i < cnt; i++)
+			if ((numbers[i] <= 0) && (numbers[i] >= 100))
+				result = 0;
 	}
-	INFO("Your random number is " << fault );
-	INFO("Your random number shoub be between 1 and 10" );
-	REQUIRE(result == 1 );
+	INFO("The number of elements or array values are not valid\n");
+	REQUIRE(result == 1);
 }
 // tests for exercise 2
-TEST_CASE("Ex2 getRdnum(21, 25)", "[example]")
+TEST_CASE("Ex2 bubble() check", "[example]")
 {
-	int result = 1;
-	int tmp, fault;
-	for(int i=0;i<10; i++)
-	{
+	const int SIZE = 100;
+	int numbers[SIZE];
+	int cnt, max, result;
+	result = 1;
+	cnt = makearray(numbers);
+	printout(numbers, cnt);
+	for (int i = 0; i < cnt; i++)
+		if ((i == 0) || (max < numbers[i]))
+			max = numbers[i];
+	bubble(numbers, cnt);
+	printout(numbers, cnt);
 
-		tmp = getRdnum(21, 25);
-		cout << tmp << endl;
-		if ((tmp < 21) || (tmp > 25))
-		{
-			fault = tmp;
-			result  = 0;
-		}
-	
-	}
-	INFO("Your random number is " << fault );
-	INFO("Your random number shoub be between 21 and 25" );
-	REQUIRE(result == 1);
-}
-// tests for exercise 3
-TEST_CASE("Ex3: getRdnum(5)", "[example]")
-{
-	int result = 1;
-	int tmp, fault;
-	for(int i=0;i<10; i++)
-	{
-		tmp = getRdnum(5);
-		cout << tmp << endl;
-		if ((tmp <= 0) || (tmp > 5))
-		{
-			fault = tmp;
-			result  = 0;
-		}
-	}
-	INFO("Your random number is " << fault );
-	INFO("Your random number shoub be between 0 and 4" );
-	REQUIRE(result == 1);
+	INFO("The last element is not a greatest value after calling bubble() \n");
+	REQUIRE(numbers[cnt - 1] == max);
 }
