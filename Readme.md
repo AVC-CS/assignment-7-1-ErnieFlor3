@@ -7,7 +7,7 @@
 
 ### Open the "main.hpp"
 
-> Complete overloading functions 
+> Complete functions 
 
 ## You can test your program by typing the command
 
