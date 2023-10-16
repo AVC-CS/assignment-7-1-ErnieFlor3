@@ -21,6 +21,22 @@ TEST_CASE("Ex1 makearray()", "[example]")
 	INFO("The number of elements or array values are not valid\n");
 	REQUIRE(result == 1);
 }
+// tests for exercise 2-0
+TEST_CASE("Ex2-1 bubble() check", "[example]")
+{
+	int numbers[] = {2, 3, 0, 5, 4};
+	int cnt = 5;
+
+	printout(numbers, cnt);
+	bubble(numbers, cnt);
+	printout(numbers, cnt);
+
+	REQUIRE(numbers[0] == 2);
+	REQUIRE(numbers[1] == 0);
+	REQUIRE(numbers[2] == 3);
+	REQUIRE(numbers[3] == 4);
+	REQUIRE(numbers[4] == 5);
+}
 // tests for exercise 2
 TEST_CASE("Ex2 bubble() check", "[example]")
 {
@@ -38,4 +54,28 @@ TEST_CASE("Ex2 bubble() check", "[example]")
 
 	INFO("The last element is not a greatest value after calling bubble() \n");
 	REQUIRE(numbers[cnt - 1] == max);
+}
+
+// tests for exercise 3
+TEST_CASE("Ex3 bubble() check", "[example]")
+{
+	const int SIZE = 100;
+	int numbers[SIZE];
+	int cnt, max, result;
+	result = 1;
+	cnt = makearray(numbers);
+	printout(numbers, cnt);
+	for (int i = 0; i < cnt; i++)
+		if ((i == 0) || (max < numbers[i]))
+			max = numbers[i];
+
+	for (int i = 0; i < cnt; i++)
+		bubble(numbers, cnt);
+	printout(numbers, cnt);
+
+	REQUIRE(numbers[cnt - 1] == max);
+	for (int i = 0; i < cnt - 1; i++)
+	{
+		REQUIRE(numbers[i] <= numbers[i + 1]);
+	}
 }
