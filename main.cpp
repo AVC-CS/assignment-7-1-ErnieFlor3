@@ -7,7 +7,9 @@ int main()
 
 	last = makearray(number);
 	printout(number, last);
-	for (int i = 0; i < last; i++)
-		bubble(number, last);
+	bubble(number, last);
 	printout(number, last);
+	// for (int i = 0; i < last; i++)
+	// 	bubble(number, last);
+	// printout(number, last);
 }
